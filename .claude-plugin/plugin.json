@@ -1,0 +1,19 @@
+{
+  "name": "fc-admin",
+  "version": "0.1.0",
+  "description": "Project-specific Claude Code skill plugin for the future-community-manage admin (Vue 3 + Vite + TS + Pinia + Element Plus). Provides guided CRUD module scaffolding, project architecture guidance, and code review. Independent of thirdnet-fullstack.",
+  "author": {
+    "name": "thirdnet"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/tianbiai/thirdnet-dev",
+  "repository": "https://github.com/tianbiai/thirdnet-dev.git",
+  "keywords": [
+    "vue3",
+    "element-plus",
+    "admin",
+    "crud",
+    "code-review",
+    "future-community"
+  ]
+}
