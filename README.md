@@ -18,16 +18,15 @@ This plugin is **independent** of `thirdnet-fullstack` — it does not depend on
 Local link install (development):
 
 ```bash
-# from inside future-community-manage (or any consumer project)
-git clone https://github.com/tianbiai/thirdnet-dev.git /tmp/thirdnet-dev
-ln -s /tmp/thirdnet-dev/plugins/fc-admin /Users/mum/.claude/plugins/fc-admin
+git clone https://github.com/skyuming/fc-admin.git /tmp/fc-admin
+ln -s /tmp/fc-admin /Users/mum/.claude/plugins/fc-admin
 # restart Claude Code
 ```
 
 Or, if you have the marketplace enabled:
 
 ```bash
-/plugin marketplace add tianbiai/thirdnet-dev
+/plugin marketplace add skyuming/fc-admin
 /plugin install fc-admin
 ```
 
