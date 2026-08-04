@@ -11,10 +11,10 @@ When the user asks "how do I use X" or "where is X" about `future-community-mana
 
 - Repo root: typically `/Users/mum/Documents/work/FC/future-community-manage` (or a sibling fork).
 - Stack: Vue 3 + Vite + TypeScript + Pinia + Vue Router 4 + Element Plus.
-- Dynamic routing: route definitions live under `src/router/modules/*.ts`; the global router in `src/router/index.ts` merges them at runtime based on the user's permission tree.
-- Mock / Real adapter: `src/api/{module}/adapter.ts` switches on `import.meta.env.VITE_USE_MOCK`.
-- Permission directive: `v-permission` is registered globally in `src/directive/permission/index.ts` and reads button-level codes from `useUserStore`.
-- Dictionaries: `DictSelect` / `DictRadio` / etc. components read from `src/api/system/dict` and cache in `useDictStore`.
+- Routing: this project does **NOT** use per-module `src/router/modules/*.ts`. Routes live in `src/router/index.ts` (constant) + `src/router/specialRoutes.{disabled,enabled}.ts` (special pages). See `references/routing.md`.
+- API: each business module has exactly `src/api/{module}/index.ts` + `src/api/{module}/types.ts`. NO mock/real/adapter split. All HTTP goes through the global `request` helper (`src/utils/request.ts`). See `references/api-module-pattern.md`.
+- Permission directive: **`v-has-perm`** (not `v-permission`), registered in `src/directive/permission/index.ts`, reads button codes from `useUserStoreHook().perms`. ROOT role bypasses all checks.
+- Stores: per-domain Pinia stores under `src/store/modules/`. See `references/store-pinia.md`.
 
 ## Reference index
 
@@ -22,9 +22,9 @@ For deeper guidance on a specific topic, load the corresponding reference doc:
 
 | Reference | Topic |
 |---|---|
-| `references/routing.md` | Dynamic routes, route `meta`, `specialRoutes.disabled.ts` / `enabled.ts`, sort order |
-| `references/permission.md` | `v-permission` directive, button-level checks, route `roles`, login flow |
-| `references/adapter-mock-real.md` | `adapter.ts` factory, `import.meta.env.VITE_USE_MOCK`, axios wrapper |
+| `references/routing.md` | `specialRoutes.disabled.ts` / `enabled.ts`, route `meta`, what `viewModules.*.ts` actually is |
+| `references/permission.md` | `v-has-perm` directive (NOT `v-permission`), button codes, route `roles` |
+| `references/api-module-pattern.md` | `src/api/{module}/index.ts` + `types.ts` — the actual API convention |
 | `references/env-config.md` | `.env.development` / `.env.staging` / `.env.production` variables and consumers |
 | `references/store-pinia.md` | Pinia setup, module pattern, persistent state, getters for permission tree |
 | `references/component-conventions.md` | Element Plus usage, dict components, table column conventions, drawer forms |

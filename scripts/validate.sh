@@ -33,7 +33,7 @@ for skill in fc-admin fc-admin-crud fc-admin-arch fc-admin-review; do
 done
 
 # 3. Required arch references exist
-for ref in routing permission adapter-mock-real env-config store-pinia component-conventions; do
+for ref in routing permission api-module-pattern env-config store-pinia component-conventions; do
   check "arch reference: $ref"           test -f "skills/fc-admin-arch/references/$ref.md"
 done
 

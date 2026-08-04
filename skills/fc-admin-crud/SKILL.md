@@ -83,38 +83,17 @@ export interface I{Entity}Api {
 }
 ```
 
-### Stage 5 — Mock implementation
+### Stage 5 — API types file
 
-Emit `src/api/{module}/mock/{entity}.ts` — class `Mock{Entity}Api implements I{Entity}Api` whose data comes from `src/mock/data/{entity}.ts` (create that file with a small seed array if it doesn't exist). Every method returns `{ code: 200, msg: 'ok', data: ... }`.
+Emit `src/api/{module}/types.ts` with the types from Stage 3. Naming follows `{Entity}{Purpose}`: `NoticeQuery`, `NoticeForm`, `NoticeInfo`, `NoticePageResult`, etc.
 
-### Stage 6 — Real implementation
+### Stage 6 — API functions file
 
-Emit `src/api/{module}/real/{entity}.ts` — class `Real{Entity}Api implements I{Entity}Api` whose methods call `request.get/post/put/delete` against `VITE_APP_BASE_API + '/{module}/{entity}/...'`. Auth header is auto-attached by `src/utils/request.ts`.
+Emit `src/api/{module}/index.ts` with one function per endpoint: `get{Entity}Page`, `get{Entity}`, `add{Entity}`, `update{Entity}`, `delete{Entity}`. Each function calls the global `request` helper (NOT `axios` directly, NOT a per-module mock/real split). See `fc-admin-arch/references/api-module-pattern.md` for the exact pattern.
 
-### Stage 7 — Adapter + index re-export
+### Stage 7 — (removed — no adapter file in this project)
 
-Emit two files:
-
-`src/api/{module}/adapter.ts`:
-
-```ts
-import type { I{Entity}Api } from './{entity}'
-import { Mock{Entity}Api } from './mock/{entity}'
-import { Real{Entity}Api } from './real/{entity}'
-
-export function create{Entity}Api(): I{Entity}Api {
-  return import.meta.env.VITE_USE_MOCK === 'true'
-    ? new Mock{Entity}Api()
-    : new Real{Entity}Api()
-}
-```
-
-`src/api/{module}/index.ts`:
-
-```ts
-import { create{Entity}Api } from './adapter'
-export const {entity}Api = create{Entity}Api()
-```
+This project does not use `src/api/{module}/adapter.ts` or per-module mock/real files. Skip directly to Stage 8.
 
 ### Stage 8 — Pinia store (only if stateful)
 
@@ -124,18 +103,19 @@ Ask: does the page need shared state across components? If yes, emit `src/store/
 
 Emit three things:
 
-1. `src/router/modules/{module}.ts` — one route record with full `meta` (title, icon, sort, roles, keepAlive). Default `sort = 100`; user can adjust.
-2. `src/views/{module}/{entity}/index.vue` — `<script setup lang="ts">` + `<el-table>` (with columns + actions) + `<el-pagination>` + `<el-drawer>` form (new/edit).
-3. `src/views/{module}/{entity}/components/{Entity}Form.vue` (if form is non-trivial).
+1. **Route entry** — add to `src/router/specialRoutes.disabled.ts` (normal route) or `src/router/specialRoutes.enabled.ts` (special-page route tied to 台州路/蚕花园). This project does **NOT** use `src/router/modules/`. See `fc-admin-arch/references/routing.md` for the exact pattern. Default `meta.sort = 100`; user can adjust. Include `title / icon / hidden / affix` at minimum.
+2. **Page** — `src/views/{module}/{entity}/index.vue` with `<script setup lang="ts">` + `<el-table>` (with columns + actions) + `<el-pagination>` + `<el-drawer>` form (new/edit). Action buttons must use `v-has-perm="['code']"` (NOT `v-permission`).
+3. **Sub-component** — `src/views/{module}/{entity}/components/{Entity}Form.vue` if the form is non-trivial (more than 5 fields, or has dependent fields).
 
 ## Completion checklist (must pass before claiming done)
 
-- [ ] `I{Entity}Api` interface name = `{Entity}Api`; methods declare contract only
-- [ ] Mock returns `{ code, msg, data }` envelope
-- [ ] Real uses env-based baseURL + attaches Authorization header (handled by `request.ts`)
-- [ ] `adapter.ts` switches on `import.meta.env.VITE_USE_MOCK`
-- [ ] `index.vue` uses Element Plus + `v-permission` on action buttons
-- [ ] Route `meta` includes `title / icon / sort / roles / keepAlive`
+- [ ] `src/api/{module}/types.ts` exports `{Entity}Query`, `{Entity}Form`, `{Entity}Info`, `{Entity}PageResult` (or equivalents)
+- [ ] `src/api/{module}/index.ts` exports one function per endpoint, all delegating to `request({...})`
+- [ ] No `mock/`, `real/`, or `adapter.ts` files inside `src/api/{module}/`
+- [ ] No `src/router/modules/` directory created
+- [ ] Route added to `specialRoutes.disabled.ts` (or `enabled.ts`); NOT `index.ts` constant section
+- [ ] Route `meta` includes `title / icon` (and `roles` if applicable)
+- [ ] `index.vue` uses Element Plus + `v-has-perm` on action buttons (NOT `v-permission`)
 - [ ] `pnpm lint:eslint` passes on emitted files (run it; fix any errors)
 - [ ] User has confirmed the page renders correctly in `pnpm dev`
 
@@ -144,20 +124,17 @@ Emit three things:
 After all stages complete, output a summary:
 
 ```
-fc-admin-crud: ✅ generated module '{entity}' under src/{api,views,router,store,types}/...
+fc-admin-crud: ✅ generated module '{entity}'
   Files created:
-    - src/types/api/{entity}.ts
-    - src/api/{module}/{entity}.ts
-    - src/api/{module}/mock/{entity}.ts
-    - src/api/{module}/real/{entity}.ts
-    - src/api/{module}/adapter.ts
+    - src/api/{module}/types.ts
     - src/api/{module}/index.ts
-    - src/router/modules/{module}.ts
     - src/views/{module}/{entity}/index.vue
     - (optional) src/store/modules/{entity}.ts
     - (optional) src/views/{module}/{entity}/components/{Entity}Form.vue
+  Files modified:
+    - src/router/specialRoutes.disabled.ts (route entry added)
   Next steps:
-    - Review and adjust column widths / sort order / role codes
+    - Review and adjust column widths / role codes
     - Run pnpm lint:eslint
     - Re-login in pnpm dev to refresh permission tree
 ```
