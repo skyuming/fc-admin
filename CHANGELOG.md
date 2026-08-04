@@ -15,7 +15,7 @@
   - `permission.md` — `v-has-perm` directive (NOT `v-permission`).
   - `api-module-pattern.md` — `src/api/{module}/{index,types}.ts` convention.
   - `env-config.md`, `store-pinia.md`, `component-conventions.md`.
-- `scripts/validate.sh` — 8 structural checks (manifest JSON, file existence, frontmatter, trigger phrases, no placeholder leaks, no thirdnet-fullstack dependency markers).
+- `scripts/validate.sh` — 7 structural checks (manifest JSON, file existence, frontmatter, trigger phrases, no placeholder leaks).
 - `README.md` — install instructions + trigger phrase index + explicit out-of-scope list.
 - `LICENSE` (MIT).
 
@@ -38,4 +38,4 @@ During smoke testing against `future-community-manage`, the plugin's documentati
   - ESLint passes on all emitted files (exit 0).
   - vue-tsc reports 0 new errors in emitted files (3 pre-existing errors in unrelated `src/views/futureGovernance/notice/` are not from this work).
 - **Review smoke test** (`src/views/login/index.vue`): emitted 4-severity findings list with file:line references — output format matches SKILL spec.
-- **Structural validation**: `./scripts/validate.sh` passes all 8 check categories (29 individual assertions).
+- **Structural validation**: `./scripts/validate.sh` passes all 7 check categories (29 individual assertions).

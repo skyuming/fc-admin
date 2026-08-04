@@ -44,7 +44,6 @@ Every answer must include:
 
 - [ ] File/line references are verified with Read/grep — not invented.
 - [ ] No npm packages referenced that aren't in `future-community-manage`'s `package.json`.
-- [ ] No conventions imported from `thirdnet-fullstack` — this plugin is independent.
 - [ ] Snippet length ≤ 30 lines.
 
 ## Out of scope

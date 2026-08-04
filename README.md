@@ -2,8 +2,6 @@
 
 A project-specific Claude Code skill plugin for the `future-community-manage` admin (Vue 3 + Vite + TypeScript + Pinia + Element Plus).
 
-This plugin is **independent** of `thirdnet-fullstack` — it does not depend on it, reference it, or share skills with it.
-
 ## What it provides
 
 | Skill | Purpose |

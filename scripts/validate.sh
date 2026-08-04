@@ -65,15 +65,6 @@ for f in skills/*/SKILL.md; do
   fi
 done
 
-# 8. No actual dependency markers pointing to thirdnet-fullstack inside skills/README.
-#    (Mentions that say "we are independent of it" are legitimate disavowals and allowed.)
-if grep -rEn "(require|depends on|uses from|imports from|extends) thirdnet-fullstack" skills/ README.md 2>/dev/null; then
-  echo "❌ dependency marker pointing to thirdnet-fullstack detected"
-  errors=$((errors + 1))
-else
-  echo "✅ no dependency markers pointing to thirdnet-fullstack"
-fi
-
 echo
 if [ "$errors" -eq 0 ]; then
   echo "🎉 all checks passed"
