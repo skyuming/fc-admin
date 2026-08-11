@@ -50,4 +50,4 @@ Every answer must include:
 
 - Generating a whole business module → `fc-admin-crud`.
 - Auditing existing code → `fc-admin-review`.
-- 未来社区 product / business context → not covered by any skill in this plugin.
+- Business-domain context of the consuming project → not covered by any skill in this plugin.

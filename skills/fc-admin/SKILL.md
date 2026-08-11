@@ -1,6 +1,6 @@
 ---
 name: fc-admin
-description: Use when the user invokes "fc-admin", "用 fc-admin", or asks for help with a Vue 3 admin project modeled after future-community-manage (vue3-element-admin). Dispatches to fc-admin-crud (module scaffolding), fc-admin-arch (project conventions), or fc-admin-review (code review). Triggers: fc-admin, admin skill, future-community admin, vue3 element-plus admin, fc 后台, fc admin, thirdnet fc, 未来社区后台, fc-admin 帮我加模块, fc-admin 帮我 review.
+description: Use when the user invokes "fc-admin", "用 fc-admin", or asks for help with a Vue 3 admin project modeled after future-community-manage (vue3-element-admin). Dispatches to fc-admin-crud (module scaffolding), fc-admin-arch (project conventions), or fc-admin-review (code review). Triggers: fc-admin, admin skill, future-community admin, vue3 element-plus admin, fc 后台, fc admin, fc-admin 帮我加模块, fc-admin 帮我 review.
 ---
 
 # fc-admin — Entry / Dispatcher
@@ -36,7 +36,7 @@ When this skill loads, **first decide** which sub-skill fits:
 This plugin **does not** cover:
 
 - Backend code (no .NET, no API server, no database).
-- 未来社区 business-domain knowledge (8 futures, communities, equipment, points, etc.).
+- Business-domain knowledge of the consuming project (product features, business workflows, domain entities).
 - Scaffolding scripts, code templates, or codegen CLIs — CRUD generation is guided Q&A only.
 - Marketplace packaging, settings.json hooks, automatic triggers.
 - Cross-project general-purpose Vue 3 admin guidance — only this project's conventions.
@@ -49,6 +49,6 @@ Sub-skills reference each other via document anchors (e.g., `[[fc-admin-arch#rou
 
 ## Trigger phrases
 
-This skill auto-loads on phrases including: "fc-admin", "fc 后台", "用 fc-admin", "fc admin 帮我", "future-community admin", "vue3 element-plus admin", "未来社区后台 skill".
+This skill auto-loads on phrases including: "fc-admin", "fc 后台", "用 fc-admin", "fc admin 帮我", "future-community admin", "vue3 element-plus admin".
 
 Once loaded, immediately apply the dispatch table — do not write code or explain architecture in this skill.

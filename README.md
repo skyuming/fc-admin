@@ -40,7 +40,7 @@ After installation, just talk to Claude naturally. Examples:
 
 | Skill | Trigger phrases |
 |---|---|
-| `fc-admin` | fc-admin, fc 后台, 用 fc-admin, fc admin 帮我, future-community admin, vue3 element-plus admin, 未来社区后台 skill |
+| `fc-admin` | fc-admin, fc 后台, 用 fc-admin, fc admin 帮我, future-community admin, vue3 element-plus admin |
 | `fc-admin-crud` | 帮我加一个模块, 新建业务模块, 生成 XX 页面, 加一个 CRUD, 帮我做 XX 模块, scaffold module, generate CRUD, add business module, new module page |
 | `fc-admin-arch` | 路由怎么配, v-permission 怎么用, 字典组件怎么接, adapter 怎么写, .env 变量有哪些, pinia 模块怎么写, element-plus 表格规范, how to add route in this project |
 | `fc-admin-review` | review, 走查, 检查一下, 看一下有没有问题, code review, PR review, audit, 审查, 检查代码, 帮我看下 |
@@ -48,7 +48,7 @@ After installation, just talk to Claude naturally. Examples:
 ## Out of scope (this plugin does NOT cover)
 
 - Backend code (.NET, API server, database).
-- 未来社区 business-domain knowledge (8 futures, communities, equipment, points, etc.).
+- Business-domain knowledge of the consuming project (product features, business workflows, domain entities).
 - Scaffolding scripts, code templates, codegen CLIs — CRUD is guided Q&A only.
 - Marketplace packaging, settings.json hooks, automatic triggers.
 
