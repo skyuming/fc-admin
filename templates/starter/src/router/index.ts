@@ -21,10 +21,10 @@ export const constantRoutes: RouteRecordRaw[] = [
     component: () => import("@/views/login/index.vue"),
     meta: { hidden: true },
   },
-  //运河沿岸的登录
+  // Alternate login route (uncomment + create the page to enable)
   // {
-  //   path: "/login",
-  //   component: () => import("@/views/login/yhindex.vue"),
+  //   path: "/login-alt",
+  //   component: () => import("@/views/login/altIndex.vue"),
   //   meta: { hidden: true },
   // },
 

@@ -8,85 +8,10 @@
   <meta name="description" content="admin console" />
   <meta name="keywords" content="admin, console, dashboard" />
   <title>{{PROJECT_TITLE}}</title>
-  <script>
-    // jsonp解决跨域方法
-    window.jsonp = (obj) => {
-      //定义一个处理Jsonp返回数据的回调函数
-      var callbackName = 'callback' + Math.random().toString(16).slice(2);
-      window[callbackName] = function (result) {
-        delete window[callbackName];
-        obj.success(result);
-      }
-      //组合请求URL
-      var callbackStr = "callback=" + callbackName;
-      var src = obj.url.includes("?") ? (obj.url + "&" + callbackStr) : (obj.url + "?" + callbackStr);
-      //将创建的新节点添加到BOM树上
-      var script = document.createElement("script");
-      script.src = src;
-      document.getElementsByTagName("body")[0].appendChild(script);
-    }
-  </script>
-
-
-  <!-- <script src="https://g.alicdn.com/gdt/jsapi/1.9.24/index.js"></script> -->
-
-  <!-- 浙政钉稳定性监控代码 -->
-  <script src='https://wpkgate-emas.ding.zj.gov.cn/static/wpk-jssdk.1.0.2/wpkReporter.js' crossorigin='true'></script>
-  <!-- <script>
-    try {
-      const config = {
-        // bid: 'XXJDWLSQ_zzdpro',
-        bid: 'chjdwlsq_zzdpro',
-        // bid: 'sc_xfllf_zzdpro',
-        // bid: 'gcq_yhyawlsq_zzdpro',
-        signkey: '1234567890abcdef',
-        gateway: 'https://wpkgate-emas.ding.zj.gov.cn'
-      };
-      const wpk = new wpkReporter(config);
-      wpk.installAll();
-      window._wpk = wpk;
-    } catch (err) {
-      console.error('浙政钉稳定性监控出错', err);
-    }
-  </script> -->
-
-  <!-- 浙政钉通用采集 SDK -->
-  <script>
-    (function (w, d, s, q, i) {
-      w[q] = w[q] || [];
-      var f = d.getElementsByTagName(s)[0], j = d.createElement(s);
-      j.async = true;
-      j.id = 'beacon-aplus';
-      j.src = 'https://alidt.alicdn.com/alilog/mlog/aplus_cloud.js';
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'aplus_queue');
-
-    aplus_queue.push({
-      action: 'aplus.setMetaInfo',
-      arguments: ['aplus-rhost-v', 'alog-api.ding.zj.gov.cn']
-    });
-    aplus_queue.push({
-      action: 'aplus.setMetaInfo',
-      arguments: ['aplus-rhost-g', 'alog-api.ding.zj.gov.cn']
-    });
-
-    var u = navigator.userAgent
-    var isAndroid = u.indexOf('Android') > -1
-    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
-
-    aplus_queue.push({
-      action: 'aplus.setMetaInfo',
-      arguments: ['appId', isAndroid ? '28302650' : isIOS ? '28328447' : '47130293']
-    });
-  </script>
-
 </head>
 
 <body>
   <div id="app"></div>
   <script type="module" src="/src/main.ts"></script>
-  <script async src="/SkeyeWebPlayer.js"></script>
-  <script src="//webapi.amap.com/maps?v=2.0&key=9317e96bee43bc4d97ebff363cafa9f0"></script>
-  <script type="text/javascript" src="https://api.tianditu.gov.cn/api?v=4.0&tk=46c130d3f114cc2a6b4c5afd97f930d5"></script>
-
+</body>
 </html>

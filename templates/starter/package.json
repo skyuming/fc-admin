@@ -50,7 +50,6 @@
     "echarts": "^5.2.2",
     "echarts-liquidfill": "^3.1.0",
     "element-plus": "^2.3.1",
-    "gdt-jsapi": "^1.9.48",
     "nprogress": "^0.2.0",
     "path-browserify": "^1.0.1",
     "path-to-regexp": "^6.2.0",
