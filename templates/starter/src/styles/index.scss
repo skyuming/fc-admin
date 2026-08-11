@@ -1,0 +1,43 @@
+@import "./sidebar";
+@import "./reset";
+@import "./dark";
+
+.app-container {
+  padding: 15px;
+
+  .search {
+    padding: 18px 0 0 10px;
+    margin-bottom: 10px;
+    background-color: var(--el-bg-color-overlay);
+    border: none;
+    border-radius: 4px;
+    box-shadow: none;
+  }
+
+  &>.el-card {
+    border: none;
+  }
+}
+
+.dashboard-container {
+  position: relative;
+  padding: 15px;
+
+  .el-card {
+    border: none;
+  }
+
+  //顶部搜索框下外边距设为0  不然上下不一致
+  .select-header {
+    .el-form-item {
+      margin-bottom: 0;
+    }
+  }
+}
+
+
+.select-header {
+  .el-input {
+    width: 200px;
+  }
+}

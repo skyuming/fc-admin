@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.2.0 — 2026-08-04
+
+### Added — `fc-admin-init` sub-skill + bundled starter template
+
+- **New sub-skill `fc-admin-init`**: 7-stage guided Q&A that scaffolds a new Vue 3 admin project from an empty directory. Stages: target dir → project name → display title → dev port → mock mode → optional initial business modules → confirm + execute.
+- **Bundled starter template** at `templates/starter/` (~400 files): core admin infrastructure (auth + layout + route guards + Pinia stores + directives + mock data + ESLint/Prettier/Stylelint/Commitlint config) distilled from `future-community-manage`, excluding business-specific modules.
+- **Templates/starter/README.md**: project-specific README with quick-start, what's included, what's not.
+
+### Changed — dispatch table + entry skill
+
+- `fc-admin/SKILL.md`: dispatch table now lists 4 sub-skills (`init` added before `crud`); trigger phrases updated; out-of-scope list refined.
+- `README.md`: added `fc-admin-init` to the skills table; trigger phrases updated; added "What's bundled" section.
+
+### Verified
+
+- **Init smoke test**: ran the 7-stage flow against `/tmp/fc-admin-smoke-test` — 400 files landed, all 4 placeholders (`{{PROJECT_NAME}}`, `{{PROJECT_TITLE}}`, `{{DEV_PORT}}`, `{{GENERATED_AT}}`) replaced, `package.json` / `index.html` / `.env.development` customized correctly, git init + initial commit succeeded.
+- `scripts/validate.sh`: passes 7 categories, 5 SKILL files (added `fc-admin-init` description with 17 trigger phrases).
+
 ## 0.1.0 — 2026-08-04
 
 ### Added
