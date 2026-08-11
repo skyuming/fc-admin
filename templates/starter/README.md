@@ -19,6 +19,26 @@ pnpm build:prod
 
 Default dev URL: http://localhost:{{DEV_PORT}}
 
+## Built-in test account (Mock mode only)
+
+When `VITE_USE_MOCK=true` (default in `.env.development`), login uses an in-memory mock backend (no real server needed).
+
+| Field | Value |
+|---|---|
+| **Username** | `admin` |
+| **Password** | `admin123` |
+| **Role** | `ROOT` (bypasses all `v-has-perm` checks) |
+| **Permissions** | All `sys:user:* / sys:role:* / sys:menu:* / sys:dept:* / sys:dict:* / sys:region:*` |
+
+**To switch to a real backend:**
+
+1. Edit `.env.development`: set `VITE_USE_MOCK = 'false'`
+2. Set `VITE_APP_BASE_API` to your backend URL
+3. Ensure your backend exposes the same endpoints (see `src/mock/handlers/auth.ts` and `src/mock/handlers/system.ts` for the expected shapes)
+4. Delete `src/mock/` directory when going to production
+
+⚠️ **Never deploy with `VITE_USE_MOCK=true` to production.**
+
 ## What's included
 
 - **Auth flow**: login page, token storage, permission tree, route guards.

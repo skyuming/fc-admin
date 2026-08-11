@@ -13,6 +13,11 @@ import '@/permission';
 // 本地SVG图标
 import 'virtual:svg-icons-register';
 
+// 启用 Mock 数据(开发 / 测试时用,生产环境务必 VITE_USE_MOCK=false)
+if (import.meta.env.VITE_USE_MOCK === 'true') {
+  import('@/mock').then(({ setupMock }) => setupMock());
+}
+
 // 国际化
 import i18n from '@/lang/index';
 
