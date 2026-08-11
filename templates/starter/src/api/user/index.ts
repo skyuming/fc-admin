@@ -113,58 +113,6 @@ export function noPassLogin(data:noPassType){
     data
   });
 }
-/**
- * 浙征订扫码后用code获取信息
- */
-
-export function zzdNoPassLogin(code:string){
-  return request({
-    url: `/auth/api/manager/zzd/login?code=${code}`,
-    method: 'POST',
-    
-  });
-}
-/**
- * 西兴街道总平台免登
- */
-export function xxjdNoPassLogin(code:string){
-  return request({
-    url: `/auth/api/manager/zzd/login/xxjdplatform?code=${code}`,
-    method: 'POST',
-    
-  });
-}
-/**
- * 长河街道总平台免登
- */
-export function chjdNoPassLogin(code:string){
-  return request({
-    url: `/auth/api/manager/zzd/login/chjdplatform?code=${code}`,
-    method: 'POST',
-    
-  });
-}
-/**
- * 浙征订h5微应用免登
- */
-export function zzdH5NoPassLogin(code:string){
-  return request({
-    url: `/auth/api/manager/zzd/login/app?auth_code=${code}`,
-    method: 'POST',
-    
-  });
-}
-/**
- * 浙征订申请账号
- */
-export function zzdApplyAccount(timestamp:any,_data:any): AxiosPromise<any>{
-  return request({
-    url: `/auth/api/manager/zzd/applyforauth?timestamp=${timestamp}`,
-    method: 'POST',
-    data:_data
-    
-  });
-}
 
 //获取手机验证码
 export function obtainVerificationCodeApi(account:any,time:any){

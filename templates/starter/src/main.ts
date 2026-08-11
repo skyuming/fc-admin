@@ -7,10 +7,8 @@ import router from '@/router';
 import { setupStore } from '@/store';
 
 import { setupDirective } from '@/directive';
-import MyTable from "@/components/myTable/index.vue";
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import '@/permission';
-import "@/utils/noPassLogin";
 
 // 本地SVG图标
 import 'virtual:svg-icons-register';
@@ -34,5 +32,4 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 setupDirective(app);
 // 全局注册 状态管理(store)
 setupStore(app);
-app.component('MTable', MyTable)
 app.use(router).use(i18n).mount('#app');

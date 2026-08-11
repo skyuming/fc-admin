@@ -33,16 +33,6 @@ export const constantRoutes: RouteRecordRaw[] = [
     component: () => import("@/views/noPermission/index.vue"),
     meta: { hidden: true },
   },
-  {
-    path: "/zzdLogin",
-    component: () => import("@/views/login/zzdLogin.vue"),
-    meta: { hidden: true },
-  },
-  {
-    path: "/thirdLogin",
-    component: () => import("@/views/login/thirdLogin.vue"),
-    meta: { hidden: true },
-  },
   ...specialRoutes,
   {
     path: "/communitysManagement",
