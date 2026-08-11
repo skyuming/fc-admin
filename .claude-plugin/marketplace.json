@@ -1,0 +1,33 @@
+{
+  "name": "fc-admin",
+  "id": "fc-admin",
+  "owner": {
+    "name": "skyuming"
+  },
+  "metadata": {
+    "description": "Project-specific Claude Code skill plugin for the future-community-manage admin (Vue 3 + Vite + TS + Pinia + Element Plus). Self-contained marketplace exposing the fc-admin plugin.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "fc-admin",
+      "source": "./",
+      "description": "Project-specific Claude Code skill plugin for the future-community-manage admin (Vue 3 + Vite + TS + Pinia + Element Plus). Provides guided CRUD module scaffolding, project architecture guidance, and code review.",
+      "version": "0.1.0",
+      "author": {
+        "name": "skyuming"
+      },
+      "homepage": "https://github.com/skyuming/fc-admin",
+      "keywords": [
+        "vue3",
+        "element-plus",
+        "admin",
+        "crud",
+        "code-review",
+        "future-community"
+      ],
+      "category": "development",
+      "strict": false
+    }
+  ]
+}

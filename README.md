@@ -13,7 +13,17 @@ A project-specific Claude Code skill plugin for the `future-community-manage` ad
 
 ## Installation
 
-Local link install (development):
+Pick **one** of the following.
+
+### Option 1 — Direct install (simplest)
+
+```bash
+/plugin install https://github.com/skyuming/fc-admin.git
+```
+
+Restart Claude Code after install.
+
+### Option 2 — Local link install (for development)
 
 ```bash
 git clone https://github.com/skyuming/fc-admin.git /tmp/fc-admin
@@ -21,10 +31,12 @@ ln -s /tmp/fc-admin /Users/mum/.claude/plugins/fc-admin
 # restart Claude Code
 ```
 
-Or, if you have the marketplace enabled:
+### Option 3 — Add as a marketplace catalog (self-hosted)
+
+The repo includes a `.claude-plugin/marketplace.json` that lists `fc-admin` itself. To register it as a marketplace:
 
 ```bash
-/plugin marketplace add skyuming/fc-admin
+/plugin marketplace add https://github.com/skyuming/fc-admin.git
 /plugin install fc-admin
 ```
 
