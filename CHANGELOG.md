@@ -22,7 +22,7 @@
 
 ### Added
 
-- Plugin manifest `.claude-plugin/plugin.json` (name: `fc-admin`, MIT, author: thirdnet).
+- Plugin manifest `.claude-plugin/plugin.json` (name: `fc-admin`, MIT, author: skyuming).
 - Skills:
   - `fc-admin` (entry / dispatcher) — routes to the right sub-skill.
   - `fc-admin-crud` — 9-stage guided Q&A to scaffold a complete business module.
